@@ -19,6 +19,13 @@ namespace FastStart.Migrations
         {
             if (_dbContext.Database.CanConnect())
             {
+                if (!_dbContext.Roles.Any())
+                {
+                    var roles = GetRoles();
+                    _dbContext.Roles.AddRange(roles);
+                    _dbContext.SaveChanges();
+                }
+
                 if (!_dbContext.Users.Any())
                 {
                     var users = GetUsers();
@@ -26,6 +33,24 @@ namespace FastStart.Migrations
                     _dbContext.SaveChanges();
                 }
             }
+        }
+        private IEnumerable<Roles> GetRoles()
+        {
+            var roles = new List<Roles>()
+            {
+                new Roles()
+                {
+                    Nazwa = "Admin"
+                },
+                new Roles()
+                {
+                    Nazwa = "Manager"
+                },new Roles()
+                {
+                    Nazwa = "User"
+                },
+            };
+            return roles;
         }
         private IEnumerable<Users> GetUsers()
         {
@@ -36,46 +61,28 @@ namespace FastStart.Migrations
                     Imie = "Piotr",
                     Nazwisko = "Markiewicz",
                     eMail = "markiewiczpiotr85@gmail.com",
-                    nrTel = 600100001,
                     nrFBO = 480900107375,
-                    Roles = new List<Roles>()
-                    { new Roles()
-                        {
-                            Nazwa = "Admin",
-                            nrFBO = 480900107375,
-                        },
-                    }
+                    nrTel = "+48600100001",
+                    Rola = "Admin"
                 },
                 new Users()
                 {
                     Imie = "Aneta",
                     Nazwisko = "Markiewicz",
                     eMail = "anetaszmagla@gmail.com",
-                    nrTel = 600100002,
                     nrFBO = 480900093437,
-                    Roles = new List<Roles>()
-                    { new Roles()
-                        {
-                            Nazwa = "Manager",
-                            nrFBO = 480900093437,
-                        },
-                    }
+                    nrTel = "+48600100002",
+                    Rola = "Manager"
                 },
                 new Users()
                 {
                     Imie = "Anna",
                     Nazwisko = "Golebicka",
                     eMail = "a.golebicka@gmail.com",
-                    nrTel = 600100003,
                     nrFBO = 480900093433,
-                    Roles = new List<Roles>()
-                    { new Roles()
-                        {
-                            Nazwa = "User",
-                            nrFBO = 480900093433,
-                        },
-                    }
-                },
+                    nrTel = "+48600100003",
+                    Rola = "User"
+                }
             };
             return users;
         }

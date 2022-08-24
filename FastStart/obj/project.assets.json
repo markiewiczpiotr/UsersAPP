@@ -27,6 +27,59 @@
           "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "FluentValidation/11.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/FluentValidation.dll": {}
+        }
+      },
+      "FluentValidation.AspNetCore/11.2.1": {
+        "type": "package",
+        "dependencies": {
+          "FluentValidation": "11.2.0",
+          "FluentValidation.DependencyInjectionExtensions": "11.2.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/FluentValidation.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/FluentValidation.AspNetCore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "FluentValidation.DependencyInjectionExtensions/11.2.0": {
+        "type": "package",
+        "dependencies": {
+          "FluentValidation": "11.2.0",
+          "Microsoft.Extensions.Dependencyinjection.Abstractions": "2.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.28": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "5.5.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
@@ -474,6 +527,44 @@
         "runtime": {
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
+      },
+      "NLog/5.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NLog.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NLog.dll": {}
+        }
+      },
+      "NLog.Extensions.Logging/5.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "3.1.0",
+          "Microsoft.Extensions.Logging": "3.1.0",
+          "NLog": "5.0.2"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/NLog.Extensions.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/NLog.Extensions.Logging.dll": {}
+        }
+      },
+      "NLog.Web.AspNetCore/5.1.1": {
+        "type": "package",
+        "dependencies": {
+          "NLog.Extensions.Logging": "5.0.2"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/NLog.Web.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/NLog.Web.AspNetCore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "runtime.native.System/4.3.0": {
         "type": "package",
@@ -1565,6 +1656,78 @@
         "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
       ]
     },
+    "FluentValidation/11.2.0": {
+      "sha512": "KV1YBM8T4plLKmShjxfmHMF6X1lDuXgyqE+t8NYNxb7jmMbPnA3u30RsuXAf2NYMv0TBCUQguI2Z6W17c/Dh1A==",
+      "type": "package",
+      "path": "fluentvalidation/11.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.11.2.0.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net5.0/FluentValidation.xml",
+        "lib/net6.0/FluentValidation.dll",
+        "lib/net6.0/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml",
+        "lib/netstandard2.1/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.xml"
+      ]
+    },
+    "FluentValidation.AspNetCore/11.2.1": {
+      "sha512": "vtwfqQkQkM1UjG2V7+3TJrhqpnnBR3ciQSufj3M2wim85BaHpC+GG6cUGlzP14NvLhi1RL5ejlpQdFok6ILIpw==",
+      "type": "package",
+      "path": "fluentvalidation.aspnetcore/11.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.aspnetcore.11.2.1.nupkg.sha512",
+        "fluentvalidation.aspnetcore.nuspec",
+        "lib/net5.0/FluentValidation.AspNetCore.dll",
+        "lib/net5.0/FluentValidation.AspNetCore.xml",
+        "lib/net6.0/FluentValidation.AspNetCore.dll",
+        "lib/net6.0/FluentValidation.AspNetCore.xml",
+        "lib/netcoreapp3.1/FluentValidation.AspNetCore.dll",
+        "lib/netcoreapp3.1/FluentValidation.AspNetCore.xml"
+      ]
+    },
+    "FluentValidation.DependencyInjectionExtensions/11.2.0": {
+      "sha512": "55xipVg5TvAvnod7QqOw5ewMp2FpZ42iwKsJ4iAoxtlXD33CtdKm7h1JDPTE5aD1ODLEqfaUijqqCqO4f5Wx9Q==",
+      "type": "package",
+      "path": "fluentvalidation.dependencyinjectionextensions/11.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.dependencyinjectionextensions.11.2.0.nupkg.sha512",
+        "fluentvalidation.dependencyinjectionextensions.nuspec",
+        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.xml",
+        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.xml"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.28": {
+      "sha512": "CJm8ONdSVt1+RMWsl0yh3OR5cDuAkU1tpWU+HgNUmom9kHMhAC4FdyqtDagtdWTfoFfS3F9UK72quCQ2kBXdJA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/3.1.28",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
+        "microsoft.aspnetcore.authentication.jwtbearer.3.1.28.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
+      ]
+    },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "sha512": "yuvf07qFWFqtK3P/MRkEKLhn5r2UbSpVueRziSqj0yJQIKFwG1pq9mOayK3zE5qZCTs0CbrwL9M6R8VwqyGy2w==",
       "type": "package",
@@ -2291,6 +2454,75 @@
         "newtonsoft.json.10.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
+      ]
+    },
+    "NLog/5.0.2": {
+      "sha512": "gucQmkaCLsyMV7OFCRwgX1J9gUDSd0ej+AZW113zmNnTtgGAicZSoE8pKPFWL6GYct1jin8i0t5SzNghyW2BWA==",
+      "type": "package",
+      "path": "nlog/5.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "N.png",
+        "lib/net35/NLog.dll",
+        "lib/net35/NLog.xml",
+        "lib/net45/NLog.dll",
+        "lib/net45/NLog.xml",
+        "lib/net46/NLog.dll",
+        "lib/net46/NLog.xml",
+        "lib/netstandard1.3/NLog.dll",
+        "lib/netstandard1.3/NLog.xml",
+        "lib/netstandard1.5/NLog.dll",
+        "lib/netstandard1.5/NLog.xml",
+        "lib/netstandard2.0/NLog.dll",
+        "lib/netstandard2.0/NLog.xml",
+        "nlog.5.0.2.nupkg.sha512",
+        "nlog.nuspec"
+      ]
+    },
+    "NLog.Extensions.Logging/5.0.2": {
+      "sha512": "JILCBDPXBuBj1YtLpbHj39I8JsJVkK/LimvVlBuqCsCZ8P5nxt95qWEY7aO5+bKiKZHxLctaeVnmSVrAEDeAmw==",
+      "type": "package",
+      "path": "nlog.extensions.logging/5.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "N.png",
+        "lib/net461/NLog.Extensions.Logging.dll",
+        "lib/net461/NLog.Extensions.Logging.xml",
+        "lib/net5.0/NLog.Extensions.Logging.dll",
+        "lib/net5.0/NLog.Extensions.Logging.xml",
+        "lib/netcoreapp3.1/NLog.Extensions.Logging.dll",
+        "lib/netcoreapp3.1/NLog.Extensions.Logging.xml",
+        "lib/netstandard1.3/NLog.Extensions.Logging.dll",
+        "lib/netstandard1.3/NLog.Extensions.Logging.xml",
+        "lib/netstandard1.5/NLog.Extensions.Logging.dll",
+        "lib/netstandard1.5/NLog.Extensions.Logging.xml",
+        "lib/netstandard2.0/NLog.Extensions.Logging.dll",
+        "lib/netstandard2.0/NLog.Extensions.Logging.xml",
+        "nlog.extensions.logging.5.0.2.nupkg.sha512",
+        "nlog.extensions.logging.nuspec"
+      ]
+    },
+    "NLog.Web.AspNetCore/5.1.1": {
+      "sha512": "O1diq2KQt7BA/YWHUKdG+B/NqqEk2sze+mmalfRjykclmrLG6Jlw4W6E9DPtXuFxNuoH/kP/feyZqaxC340Iig==",
+      "type": "package",
+      "path": "nlog.web.aspnetcore/5.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "N.png",
+        "lib/net461/NLog.Web.AspNetCore.dll",
+        "lib/net461/NLog.Web.AspNetCore.xml",
+        "lib/net5.0/NLog.Web.AspNetCore.dll",
+        "lib/net5.0/NLog.Web.AspNetCore.xml",
+        "lib/netcoreapp3.1/NLog.Web.AspNetCore.dll",
+        "lib/netcoreapp3.1/NLog.Web.AspNetCore.xml",
+        "lib/netstandard2.0/NLog.Web.AspNetCore.dll",
+        "lib/netstandard2.0/NLog.Web.AspNetCore.xml",
+        "nlog.web.aspnetcore.5.1.1.nupkg.sha512",
+        "nlog.web.aspnetcore.nuspec",
+        "readme.txt"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -5807,9 +6039,12 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 11.0.0",
+      "FluentValidation.AspNetCore >= 11.2.1",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.28",
       "Microsoft.EntityFrameworkCore >= 3.1.28",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.28",
-      "Microsoft.EntityFrameworkCore.Tools >= 3.1.28"
+      "Microsoft.EntityFrameworkCore.Tools >= 3.1.28",
+      "NLog.Web.AspNetCore >= 5.1.1"
     ]
   },
   "packageFolders": {
@@ -5855,6 +6090,14 @@
             "target": "Package",
             "version": "[11.0.0, )"
           },
+          "FluentValidation.AspNetCore": {
+            "target": "Package",
+            "version": "[11.2.1, )"
+          },
+          "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "[3.1.28, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[3.1.28, )"
@@ -5868,6 +6111,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[3.1.28, )"
+          },
+          "NLog.Web.AspNetCore": {
+            "target": "Package",
+            "version": "[5.1.1, )"
           }
         },
         "imports": [

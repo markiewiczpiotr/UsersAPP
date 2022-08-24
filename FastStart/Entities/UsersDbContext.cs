@@ -39,14 +39,8 @@ namespace FastStart.Entities
                 .IsRequired()
                 .HasMaxLength(14);
 
-            modelBuilder.Entity<Roles>()
-                .Property(r => r.Nazwa)
-                .IsRequired();
-
-            modelBuilder.Entity<Roles>()
-                .Property(r => r.nrFBO)
-                .IsRequired()
-                .HasMaxLength(12);
+            modelBuilder.Entity<Users>()
+                .Property(u => u.Rola);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

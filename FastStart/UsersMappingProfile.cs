@@ -14,12 +14,11 @@ namespace FastStart
         {
             CreateMap<Users, UsersDTO>();
 
-            CreateMap<Roles, RolesDTO>();
+            CreateMap<Roles, RolesDTO>()
+                .ReverseMap();
 
-            CreateMap<CreateUsersDTO, Users>()
-                .ForMember(u => u.Roles,
-                c => c.MapFrom(dto => new Roles()
-                { Nazwa = dto.Nazwa, nrFBO = dto.nrFBO }));
+            CreateMap<CreateUsersDTO, Users>();
+
         }
     }
 }

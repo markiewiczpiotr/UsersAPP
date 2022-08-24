@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace FastStart.Models
 {
-    public class RolesDTO
+    public class LoginDTO
     {
-
+        public string eMail { get; set; }
+        public string Password { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace FastStart.Entities
     {
         public int Id { get; set; }
         public string Nazwa { get; set; }
-        public long nrFBO { get; set; }
+        public int? UsersId { get; set; }
         public virtual Users Users { get; set; }
     }
 }

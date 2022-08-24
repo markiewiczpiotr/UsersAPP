@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastStart.Migrations
 {
     [DbContext(typeof(UsersDbContext))]
-    [Migration("20220818162858_Init")]
+    [Migration("20220824121543_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,15 +29,10 @@ namespace FastStart.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Nazwa")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UsersId")
                         .HasColumnType("int");
-
-                    b.Property<long>("nrFBO")
-                        .HasColumnType("bigint")
-                        .HasMaxLength(12);
 
                     b.HasKey("Id");
 
@@ -53,6 +48,9 @@ namespace FastStart.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime?>("DataUrodzin")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Imie")
                         .IsRequired()
                         .HasColumnType("nvarchar(25)")
@@ -63,6 +61,12 @@ namespace FastStart.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rola")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("eMail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -71,8 +75,9 @@ namespace FastStart.Migrations
                         .HasColumnType("bigint")
                         .HasMaxLength(12);
 
-                    b.Property<long>("nrTel")
-                        .HasColumnType("bigint")
+                    b.Property<string>("nrTel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(14)")
                         .HasMaxLength(14);
 
                     b.HasKey("Id");
@@ -83,7 +88,7 @@ namespace FastStart.Migrations
             modelBuilder.Entity("FastStart.Entities.Roles", b =>
                 {
                     b.HasOne("FastStart.Entities.Users", "Users")
-                        .WithMany("Roles")
+                        .WithMany()
                         .HasForeignKey("UsersId");
                 });
 #pragma warning restore 612, 618

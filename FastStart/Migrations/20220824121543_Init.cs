@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FastStart.Migrations
 {
@@ -14,9 +15,12 @@ namespace FastStart.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Imie = table.Column<string>(maxLength: 25, nullable: false),
                     Nazwisko = table.Column<string>(maxLength: 50, nullable: false),
+                    DataUrodzin = table.Column<DateTime>(nullable: true),
                     eMail = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: true),
                     nrFBO = table.Column<long>(maxLength: 12, nullable: false),
-                    nrTel = table.Column<long>(maxLength: 14, nullable: false)
+                    nrTel = table.Column<string>(maxLength: 14, nullable: false),
+                    Rola = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -29,8 +33,7 @@ namespace FastStart.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nazwa = table.Column<string>(nullable: false),
-                    nrFBO = table.Column<long>(maxLength: 12, nullable: false),
+                    Nazwa = table.Column<string>(nullable: true),
                     UsersId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
