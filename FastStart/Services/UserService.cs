@@ -20,7 +20,7 @@ namespace FastStart.Services
     public interface IUserService
     {
         int Create(CreateUsersDTO dto);
-        IEnumerable<UsersDTO> GetAll();
+        IEnumerable<UsersDTO> GetAll(string searchPhrase);
         UsersDTO GetById(int id);
         void Delete(int id);
         void Update(int id, UpdateUsersDTO dto);
@@ -35,7 +35,8 @@ namespace FastStart.Services
         private readonly IPasswordHasher<Users> _passwordHasher;
         private readonly AuthenticationSettings _authenticationSettings;
 
-        public UserService(UsersDbContext dbContext, IMapper mapper, ILogger<UserService> logger, IPasswordHasher<Users> passwordHasher, AuthenticationSettings authenticationSettings)
+        public UserService(UsersDbContext dbContext, IMapper mapper, ILogger<UserService> logger, 
+            IPasswordHasher<Users> passwordHasher, AuthenticationSettings authenticationSettings)
         {
             _dbContext = dbContext;
             _mapper = mapper;
@@ -43,10 +44,12 @@ namespace FastStart.Services
             _passwordHasher = passwordHasher;
             _authenticationSettings = authenticationSettings;
         }
-        public IEnumerable<UsersDTO> GetAll()
+        public IEnumerable<UsersDTO> GetAll(string searchPhrase)
         {
             var users = _dbContext
                 .Users
+                .Where(u => searchPhrase == null || u.Nazwisko.ToLower().Contains(searchPhrase.ToLower())
+                                                    || u.Rola.ToLower().Contains(searchPhrase.ToLower()))
                 .ToList();
 
             var usersDTOs = _mapper.Map<List<UsersDTO>>(users);
@@ -93,8 +96,8 @@ namespace FastStart.Services
                 throw new NotFoundExceptions("User not found");
 
             users.Nazwisko = dto.Nazwisko;
-            users.eMail = dto.eMail;
-            users.nrTel = dto.nrTel;
+            users.Email = dto.Email;
+            users.NrTel = dto.NrTel;
             users.Rola = dto.Rola;
 
             var hashedPassword = _passwordHasher.HashPassword(users, dto.Password);
@@ -123,7 +126,7 @@ namespace FastStart.Services
         public string GenerateJwt(LoginDTO dto)
         {
             var user = _dbContext.Users
-                .FirstOrDefault(u => u.eMail == dto.eMail);
+                .FirstOrDefault(u => u.Email == dto.Email);
 
             if (user is null)
             {
@@ -140,7 +143,8 @@ namespace FastStart.Services
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, $"{user.Imie} {user.Nazwisko}"),
-                new Claim("Rola", user.Rola)
+                new Claim(ClaimTypes.Role, user.Rola),
+                new Claim("DataUrodzenia", user.DataUrodzenia.Value.ToString("yyyy-MM-dd"))
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authenticationSettings.JwtKey));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

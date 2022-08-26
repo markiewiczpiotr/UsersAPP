@@ -5,5 +5,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <ActiveDebugProfile>FastStart</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\piotr\source\repos\FastStart\FastStart\Properties\PublishProfiles\fast-start - Web Deploy3.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

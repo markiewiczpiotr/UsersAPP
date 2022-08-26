@@ -16,10 +16,10 @@ namespace FastStart.Migrations
                     Imie = table.Column<string>(maxLength: 25, nullable: false),
                     Nazwisko = table.Column<string>(maxLength: 50, nullable: false),
                     DataUrodzin = table.Column<DateTime>(nullable: true),
-                    eMail = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: true),
-                    nrFBO = table.Column<long>(maxLength: 12, nullable: false),
-                    nrTel = table.Column<string>(maxLength: 14, nullable: false),
+                    NrFBO = table.Column<long>(maxLength: 12, nullable: false),
+                    NrTel = table.Column<string>(maxLength: 14, nullable: false),
                     Rola = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

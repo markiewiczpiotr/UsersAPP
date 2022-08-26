@@ -7,7 +7,7 @@ namespace FastStart.Models
 {
     public class LoginDTO
     {
-        public string eMail { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
     }
 }

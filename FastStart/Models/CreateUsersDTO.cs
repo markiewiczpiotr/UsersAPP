@@ -17,18 +17,15 @@ namespace FastStart.Models
         [Required]
         [MaxLength(50)]
         public string Nazwisko { get; set; }
-        [Required]
-        [EmailAddress]
-        public string eMail { get; set; }
-        [Required]
-        [MinLength(8)]
+        public DateTime? DataUrodzenia { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
         [Required]
-        public long nrFBO { get; set; }
+        public long NrFBO { get; set; }
         [Phone]
-        [Display(Name = "nrTel")]
-        public string nrTel { get; set; }
+        [Display(Name = "NrTel")]
+        public string NrTel { get; set; }
         public string Rola { get; set; }
 
     }

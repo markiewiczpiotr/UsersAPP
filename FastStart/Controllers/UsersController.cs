@@ -6,6 +6,7 @@ using AutoMapper;
 using FastStart.Entities;
 using FastStart.Models;
 using FastStart.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +14,7 @@ namespace FastStart.Controllers
 {
     [Route("api/users")]
     [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -21,6 +23,7 @@ namespace FastStart.Controllers
             _userService = userService;
         }
         [HttpPut("{id}")]
+        [AllowAnonymous]
         public ActionResult Update([FromBody] UpdateUsersDTO dto, [FromRoute] int id)
         {
             _userService.Update(id, dto);
@@ -28,6 +31,7 @@ namespace FastStart.Controllers
             return Ok();
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin,Manager")]
         public ActionResult Delete([FromRoute] int id)
         {
             _userService.Delete(id);
@@ -43,9 +47,10 @@ namespace FastStart.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<UsersDTO>> GetAll()
+        [Authorize(Policy = "AtLeast18")]
+        public ActionResult<IEnumerable<UsersDTO>> GetAll([FromQuery]string searchPhrase)
         {
-            var usersDTOs = _userService.GetAll();
+            var usersDTOs = _userService.GetAll(searchPhrase);
 
             return Ok(usersDTOs);
         }

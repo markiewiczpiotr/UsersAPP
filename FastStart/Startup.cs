@@ -13,6 +13,10 @@ using FluentValidation.AspNetCore;
 using FluentValidation;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using FastStart.Authorization;
+using Microsoft.AspNetCore.Authorization;
+using FastStart.Validators;
+using Microsoft.EntityFrameworkCore;
 
 namespace FastStart
 {
@@ -25,6 +29,7 @@ namespace FastStart
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        [System.Obsolete]
         public void ConfigureServices(IServiceCollection services)
         {
             var authenticationSettings = new AuthenticationSettings();
@@ -48,21 +53,28 @@ namespace FastStart
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authenticationSettings.JwtKey)),
                 };
             });
-
-            services.AddControllers();
-            services.AddDbContext<UsersDbContext>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AtLeast18", builder => builder.AddRequirements(new MinimumAgeRequirement(18)));
+            });
+            services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
+            services.AddControllers().AddFluentValidation();
+            services.AddDbContext<UsersDbContext>
+                (options => options.UseSqlServer(Configuration.GetConnectionString("UsersDbConnection")));
             services.AddScoped<UsersSeeder>();
             services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<IUserService, UserService>();
             //       services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IPasswordHasher<Users>, PasswordHasher<Users>>();
-        //    services.AddScoped<IPasswordValidator<CreateUsersDTO>, UsersValidator>();
+            services.AddScoped<IValidator<CreateUsersDTO>, UserValidatorDTO>();
             services.AddScoped<ErrorHandlingMiddleware>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UsersSeeder seeder)
         {
+            app.UseResponseCaching();
+            app.UseStaticFiles();
             seeder.Seed();
             if (env.IsDevelopment())
             {

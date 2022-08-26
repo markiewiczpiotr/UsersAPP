@@ -46,8 +46,12 @@ namespace FastStart.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("DataUrodzin")
+                    b.Property<DateTime?>("DataUrodzenia")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Imie")
                         .IsRequired()
@@ -59,24 +63,20 @@ namespace FastStart.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<long>("NrFBO")
+                        .HasColumnType("bigint")
+                        .HasMaxLength(12);
+
+                    b.Property<string>("NrTel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(14)")
+                        .HasMaxLength(14);
+
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rola")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("eMail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("nrFBO")
-                        .HasColumnType("bigint")
-                        .HasMaxLength(12);
-
-                    b.Property<string>("nrTel")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(14)")
-                        .HasMaxLength(14);
 
                     b.HasKey("Id");
 

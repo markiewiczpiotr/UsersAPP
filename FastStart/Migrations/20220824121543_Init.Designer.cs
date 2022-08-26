@@ -67,15 +67,15 @@ namespace FastStart.Migrations
                     b.Property<string>("Rola")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("eMail")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("nrFBO")
+                    b.Property<long>("NrFBO")
                         .HasColumnType("bigint")
                         .HasMaxLength(12);
 
-                    b.Property<string>("nrTel")
+                    b.Property<string>("NrTel")
                         .IsRequired()
                         .HasColumnType("nvarchar(14)")
                         .HasMaxLength(14);

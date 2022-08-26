@@ -9,16 +9,13 @@ namespace FastStart.Models
     public class UpdateUsersDTO
     {
         public string Nazwisko { get; set; }
-        [Required]
-        [EmailAddress]
-        public string eMail { get; set; }
-        [Required]
-        [MinLength(8)]
+        public DateTime? DataUrodzenia { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
         [Phone]
-        [Display(Name = "nrTel")]
-        public string nrTel { get; set; }
+        [Display(Name = "NrTel")]
+        public string NrTel { get; set; }
         public string Rola { get; set; }
-        public object ConfirmPassword { get; internal set; }
     }
 }

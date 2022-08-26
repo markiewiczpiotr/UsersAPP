@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FastStart.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace FastStart.Migrations
 {
@@ -19,6 +20,12 @@ namespace FastStart.Migrations
         {
             if (_dbContext.Database.CanConnect())
             {
+                var pendingMigrations = _dbContext.Database.GetPendingMigrations();
+                if (pendingMigrations != null && pendingMigrations.Any())
+                {
+                    _dbContext.Database.Migrate();
+                }
+
                 if (!_dbContext.Roles.Any())
                 {
                     var roles = GetRoles();
@@ -60,27 +67,27 @@ namespace FastStart.Migrations
                 {
                     Imie = "Piotr",
                     Nazwisko = "Markiewicz",
-                    eMail = "markiewiczpiotr85@gmail.com",
-                    nrFBO = 480900107375,
-                    nrTel = "+48600100001",
+                    Email = "markiewiczpiotr85@gmail.com",
+                    NrFBO = 480900107375,
+                    NrTel = "+48600100001",
                     Rola = "Admin"
                 },
                 new Users()
                 {
                     Imie = "Aneta",
                     Nazwisko = "Markiewicz",
-                    eMail = "anetaszmagla@gmail.com",
-                    nrFBO = 480900093437,
-                    nrTel = "+48600100002",
+                    Email = "anetaszmagla@gmail.com",
+                    NrFBO = 480900093437,
+                    NrTel = "+48600100002",
                     Rola = "Manager"
                 },
                 new Users()
                 {
                     Imie = "Anna",
                     Nazwisko = "Golebicka",
-                    eMail = "a.golebicka@gmail.com",
-                    nrFBO = 480900093433,
-                    nrTel = "+48600100003",
+                    Email = "a.golebicka@gmail.com",
+                    NrFBO = 480900093433,
+                    NrTel = "+48600100003",
                     Rola = "User"
                 }
             };
