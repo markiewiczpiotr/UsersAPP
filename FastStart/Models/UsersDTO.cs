@@ -1,10 +1,4 @@
-﻿using FastStart.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FastStart.Models
+﻿namespace FastStart.Models
 {
     public class UsersDTO
     {

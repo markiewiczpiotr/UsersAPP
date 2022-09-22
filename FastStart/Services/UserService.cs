@@ -1,19 +1,12 @@
 ﻿using AutoMapper;
 using FastStart.Entities;
 using FastStart.Exceptions;
-//using FastStart.Exceptions;
 using FastStart.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FastStart.Services
 {
@@ -48,8 +41,7 @@ namespace FastStart.Services
         {
             var users = _dbContext
                 .Users
-                .Where(u => searchPhrase == null || u.Nazwisko.ToLower().Contains(searchPhrase.ToLower())
-                                                    || u.Rola.ToLower().Contains(searchPhrase.ToLower()))
+                .Where(u => searchPhrase == null || u.Rola.ToLower().Contains(searchPhrase.ToLower()))
                 .ToList();
 
             var usersDTOs = _mapper.Map<List<UsersDTO>>(users);
@@ -144,7 +136,7 @@ namespace FastStart.Services
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, $"{user.Imie} {user.Nazwisko}"),
                 new Claim(ClaimTypes.Role, user.Rola),
-                new Claim("DataUrodzenia", user.DataUrodzenia.Value.ToString("yyyy-MM-dd"))
+                new Claim("DataUrodzenia", $"{user.DataUrodzenia}"),
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_authenticationSettings.JwtKey));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

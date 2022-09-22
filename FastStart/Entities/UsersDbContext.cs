@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace FastStart.Entities
 {
     public class UsersDbContext : DbContext
     {
         public UsersDbContext(DbContextOptions<UsersDbContext> options) : base(options)
-        {
-
-        }
+            {
+            }
+    /*    private string _connectionString =
+            "Server=tcp:usersfbo.database.windows.net,1433;Initial Catalog=usersfbo;Persist Security Info=False;User ID=p_markiewicz;Password=S€cr€t_P@ssw0rds;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+     */ 
         public DbSet<Users> Users { get; set; }
-        public DbSet<Roles> Roles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,7 +25,7 @@ namespace FastStart.Entities
                 .HasMaxLength(50);
 
             modelBuilder.Entity<Users>()
-               .Property(u => u.DataUrodzenia);
+                .Property(u => u.DataUrodzenia);
 
             modelBuilder.Entity<Users>()
                 .Property(u => u.Email)
@@ -47,5 +44,10 @@ namespace FastStart.Entities
             modelBuilder.Entity<Users>()
                 .Property(u => u.Rola);
         }
+    /*    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(_connectionString);
+        }
+    */
     }
 }

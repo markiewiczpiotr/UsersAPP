@@ -1,12 +1,6 @@
-﻿/*using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace FastStart.Services
+﻿namespace FastStart.Services
 {
     public class AuthorizationService
     {
     }
 }
-*/

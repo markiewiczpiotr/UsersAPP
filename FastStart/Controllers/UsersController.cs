@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using FastStart.Entities;
-using FastStart.Models;
+﻿using FastStart.Models;
 using FastStart.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace FastStart.Controllers
 {
@@ -22,29 +15,6 @@ namespace FastStart.Controllers
         {
             _userService = userService;
         }
-        [HttpPut("{id}")]
-        [AllowAnonymous]
-        public ActionResult Update([FromBody] UpdateUsersDTO dto, [FromRoute] int id)
-        {
-            _userService.Update(id, dto);
-            
-            return Ok();
-        }
-        [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin,Manager")]
-        public ActionResult Delete([FromRoute] int id)
-        {
-            _userService.Delete(id);
-
-            return NoContent();
-        }
-        [HttpPost]
-        public ActionResult Create([FromBody] CreateUsersDTO dto)
-        {
-            var id = _userService.Create(dto);
-
-            return Created($"/api/users/{id}", null);
-        }
 
         [HttpGet]
         [Authorize(Policy = "AtLeast18")]
@@ -54,6 +24,7 @@ namespace FastStart.Controllers
 
             return Ok(usersDTOs);
         }
+
         [HttpGet("{id}")]
         public ActionResult<UsersDTO> Get([FromRoute] int id)
         {
@@ -61,7 +32,34 @@ namespace FastStart.Controllers
         
             return Ok(users);
         }
+
+        [HttpPost]
+        public ActionResult Create([FromBody] CreateUsersDTO dto)
+        {
+            var id = _userService.Create(dto);
+
+            return Created($"/api/users/{id}", null);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult Update([FromBody] UpdateUsersDTO dto, [FromRoute] int id)
+        {
+            _userService.Update(id, dto);
+            
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin,Manager")]
+        public ActionResult Delete([FromRoute] int id)
+        {
+            _userService.Delete(id);
+
+            return NoContent();
+        }
+
         [HttpPost("login")]
+        [AllowAnonymous]
         public ActionResult Login([FromBody]LoginDTO dto)
         {
             string token = _userService.GenerateJwt(dto);

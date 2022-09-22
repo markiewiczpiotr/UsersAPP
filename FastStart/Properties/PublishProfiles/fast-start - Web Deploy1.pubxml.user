@@ -3,10 +3,11 @@
 Ten plik jest wykorzystywany przez proces publikowania/pakowania projektu internetowego. Możesz dostosować zachowanie tego procesu
  poprzez edycję tego pliku MSBuild. Aby dowiedzieć się więcej o tym działaniu, odwiedź stronę https://go.microsoft.com/fwlink/?LinkID=208121. 
 -->
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project>
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACODs4+T/kUibvkXxoLE1DwAAAAACAAAAAAAQZgAAAAEAACAAAABCMaa8TAgkvUJSP4dfIMzZjIm4ig9qb+etDzB93sIhSwAAAAAOgAAAAAIAACAAAABt2G5AsgWKFv06t4MK1IqbZs7Q4pMOyc0db7Alv0y5Z4AAAABbiP0B4LQR/YSr5RtCNCWsx/+sGF55v5FP+8ftmJu02/1C7Ce8vz+4QeHinr7qpvkzgnvDmSSd0wrkH+ErtpDC14OrRT3/5Gl7A05KXplFHs9Im6MPAbYNDbPHAwMgua9FYrqN8UZ3/JAwGkyKSSCAPtBcmCmvzPHALGPVkp3OZkAAAADdBgxHiPC2TsPYz9C6X96O1HtmpPb+DK3kqsLAyMgtNgLe85FAbDcUGp/O+ZLCCG3/q2Sxq/pZWGnhh1Gp35Er</EncryptedPassword>
-    <History>True|2022-08-26T12:50:32.1802077Z;True|2022-08-26T14:42:26.6571185+02:00;</History>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACODs4+T/kUibvkXxoLE1DwAAAAACAAAAAAAQZgAAAAEAACAAAAD2BE/A5m8BQxazCzas8jafujRxwrqU7kGy+LANy0EETQAAAAAOgAAAAAIAACAAAACjy2ORHppGwmq3vLg/jt2KzCbLpkFOKutHMIl3PVpB+YAAAAC5yH1GvCs1DIehY9/tVUIXcMZCCtzXuTyLvMR7ZySBJqwSETiev6tbWtPF6KSBx4lFVlknzqQD3rc2rhlCdGKxmvck2cmEkZ+z5GQO9BHoUj1SJ318tUPmGntcRcOsraWmQ5bYDp0e6SK6npGmCarlfvh4X7RMK0qWw3YEsFOOmEAAAADgczdPSjFmNgYjWdJM2TbLKbY24V1fhu6sYxveVf+mumNZ0aSXUi54/ZasAPYUJgoxuTmtDXqzCa2qtAwhru4+</EncryptedPassword>
+    <History>False|2022-09-22T16:24:02.0442980Z;</History>
+    <LastFailureDetails />
   </PropertyGroup>
 </Project>

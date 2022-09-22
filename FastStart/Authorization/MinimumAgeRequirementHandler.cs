@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace FastStart.Authorization
 {
@@ -17,13 +12,14 @@ namespace FastStart.Authorization
         }
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, MinimumAgeRequirement requirement)
         {
-            var dataUrodzin = DateTime.Parse(context.User.FindFirst(c => c.Type == "DataUrodzin").Value);
+            var dataUrodzenia = DateTime.Parse(context.User.FindFirst(c => c.Type == "DataUrodzenia").Value);
 
             var userEmail = context.User.FindFirst(c => c.Type == ClaimTypes.Name).Value;
 
-            _logger.LogInformation($"User: {userEmail} with date of birght: [{dataUrodzin}]");
+            string message = $"User: {userEmail} with date of birght: [{dataUrodzenia}]";
+            _logger.LogInformation(message);
 
-            if (dataUrodzin.AddYears(requirement.MinimumAge) <= DateTime.Today)
+            if (dataUrodzenia.AddYears(requirement.MinimumAge) <= DateTime.Today)
             {
                 _logger.LogInformation("Authorization succedded");
                 context.Succeed(requirement);

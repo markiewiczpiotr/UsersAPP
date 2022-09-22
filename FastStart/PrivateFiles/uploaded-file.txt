@@ -1,1 +1,1 @@
-This is the file you uploaded to the server.
+This is the uploaded file to the server.

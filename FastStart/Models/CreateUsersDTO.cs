@@ -1,9 +1,4 @@
-﻿using FastStart.Entities;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 
 namespace FastStart.Models
@@ -17,11 +12,10 @@ namespace FastStart.Models
         [Required]
         [MaxLength(50)]
         public string Nazwisko { get; set; }
-        public DateTime? DataUrodzenia { get; set; }
+        public string DataUrodzenia { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
-        [Required]
         public long NrFBO { get; set; }
         [Phone]
         [Display(Name = "NrTel")]

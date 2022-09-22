@@ -3,10 +3,16 @@
 Ten plik jest wykorzystywany przez proces publikowania/pakowania projektu internetowego. Możesz dostosować zachowanie tego procesu
  poprzez edycję tego pliku MSBuild. Aby dowiedzieć się więcej o tym działaniu, odwiedź stronę https://go.microsoft.com/fwlink/?LinkID=208121. 
 -->
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project>
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACODs4+T/kUibvkXxoLE1DwAAAAACAAAAAAAQZgAAAAEAACAAAAD8M3SCCHp+IpKLz5KKy5MemtPGVuzfk4CUplquwRR1BQAAAAAOgAAAAAIAACAAAACyGby0bD9Ko7vNzo8PeCnpsf6w76mSsMzXR3F2omq3w4AAAAA3ONFbfsuIw++7us7PL54RLTJh6gFd5LMoFSpxw12biDr/qFWAc1dy8pCeWVS8KIqWmvyLHTzZ4gqj5aCF99YFa3CnDHW817OtjirOJ+vVKJmO97eCDDCYE51F1VnOnmk5JCUk3GwooSnid18avUhUeQkBoPqWCqu/U2qKAYyVS0AAAABV7jtBgjadeaaSfBn9eY+jj0AcqzR1Qq1GhlNVRB5G7Zdy8pnaukOqynoA8wpBSEYROeOdQlpwxEfyBK89RPWF</EncryptedPassword>
-    <History>True|2022-08-26T11:39:55.5058111Z;</History>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAACODs4+T/kUibvkXxoLE1DwAAAAACAAAAAAAQZgAAAAEAACAAAAAMnDx2olw87rDG9yWcUz4N6u9PEfCLyUdh1RX2/qhR5AAAAAAOgAAAAAIAACAAAADb8xdhEqTuyXO4kgaKbi5OdNoP4xL6aZQjM8PeGO8BYoAAAACR/lnuW44IXG5T47IRZAJdyPW6ApfhE7pO7WrE06FWZtae6XwBWKoC8DS+tr5LocrYhe9oczhwPIIrW9gzfQAgMplZVtYh6Xm3qvVpO2z0oXJCtCPKJ+hPRYU5A/09V8G2p4+yI8uwU67A2PWybwlDk7FuG5itnWlIAYJ97+v37EAAAACrW20Ol1IaSkM4RGLN460Fy2MwHAyDr9cGGYWia2GBE7T+fSoKoD87L++/NClDo5EY9fsQrFv4gfDkzF47DApZ</EncryptedPassword>
+    <History>True|2022-09-21T20:38:02.9152482Z;True|2022-09-21T22:34:14.5946374+02:00;True|2022-09-21T22:30:51.7536168+02:00;True|2022-09-21T22:28:26.4723073+02:00;True|2022-09-21T22:24:26.9839282+02:00;True|2022-09-21T22:18:38.6429263+02:00;</History>
+    <LastFailureDetails />
   </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="FastStart.Entities.UsersDbContext">
+      <Value>Server=tcp:usersfbo.database.windows.net,1433%3bInitial Catalog=usersfbo%3bPersist Security Info=False%3bUser ID=p_markiewicz%3bPassword=S€cr€t_P%40ssw0rds%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
 </Project>

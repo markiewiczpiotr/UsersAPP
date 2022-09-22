@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.Extensions.FileProviders;
 
-namespace FastStart.Controllers
-{
-    [Route("file")]
-//    [Authorize]
+namespace FastStart.Controllers;
+
+[Route("file")]
+    [ApiController]
+    [Authorize]
     public class FileController : ControllerBase
     {
         [HttpGet]
@@ -56,4 +49,4 @@ namespace FastStart.Controllers
             return BadRequest();
         }
     }
-}
+
